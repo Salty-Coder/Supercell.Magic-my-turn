@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    webserver:
+        image: nginx:alpine
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+        volumes:
+            - ./www/:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    couchserver:
+        image: couchbase:community-6.0.0
+        restart: unless-stopped
+        ports:
+            - "8091:8091"
+        volumes:
+            - couchbasedb:/opt/couchbase/var
+    redisserver:
+        image: redis:alpine3.11
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+        volumes:
+            - redisdb:/data
+
+volumes:
+    couchbasedb:
+    redisdb:
