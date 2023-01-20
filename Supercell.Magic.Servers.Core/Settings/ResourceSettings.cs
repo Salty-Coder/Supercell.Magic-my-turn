@@ -20,12 +20,14 @@
 
         public static string GetContentUrl()
         {
-            if (ResourceSettings.ContentUrlList.Size() > 1)
+            /*if (ResourceSettings.ContentUrlList.Size() > 1)
             {
                 return ResourceSettings.ContentUrlList[1];
             }
 
-            return null;
+            return null;*/
+
+            return "http://127.0.0.1:8000/supercell/assets";
         }
 
         public static string GetAppStoreUrl(bool androidVersion)

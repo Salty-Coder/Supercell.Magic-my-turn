@@ -15,6 +15,7 @@
 
         public TcpServerSocket(string host, int port)
         {
+            Logging.Warning("Listening on " + host + ":" + port);
             this.m_listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             this.m_listener.Bind(new IPEndPoint(IPAddress.Parse(host), port));
             this.m_listener.Listen(TcpServerSocket.BACKLOG_SIZE);

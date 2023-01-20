@@ -26,7 +26,7 @@
             }
             catch (Exception)
             {
-                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist", path));
+                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist (byte)", path));
             }
 
             return null;
@@ -43,7 +43,7 @@
             }
             catch (Exception)
             {
-                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist", path));
+                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist (string)", path));
             }
 
             return null;
@@ -55,12 +55,14 @@
             {
                 using (WebClient client = ServerHttpClient.CreateWebClient())
                 {
+                    Logging.Warning(path);
                     return LogicJSONParser.ParseObject(client.DownloadString(string.Format("{0}/{1}", ServerCore.ConfigurationServer, path)));
+                    //return LogicJSONParser.ParseObject(client.DownloadString(path));
                 }
             }
             catch (Exception)
             {
-                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist", path));
+                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist (json)", path));
             }
 
             return null;
@@ -72,12 +74,13 @@
             {
                 using (WebClient client = ServerHttpClient.CreateWebClient())
                 {
+                    Logging.Warning(resourceSha + path);
                     return client.DownloadData(string.Format("{0}/{1}/{2}", ResourceSettings.GetContentUrl(), resourceSha, path));
                 }
             }
             catch (Exception)
             {
-                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist", path));
+                Logging.Warning(string.Format("ServerHttpClient: file {0} doesn't exist (asset)", path));
             }
 
             return null;

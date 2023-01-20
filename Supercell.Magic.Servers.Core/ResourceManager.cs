@@ -42,7 +42,7 @@
                 switch (Path.GetExtension(fileName))
                 {
                     case ".csv":
-                        using (MemoryStream inputStream = new MemoryStream(content))
+                        /*using (MemoryStream inputStream = new MemoryStream(content))
                         {
                             using (MemoryStream outputStream = new MemoryStream())
                             {
@@ -52,6 +52,7 @@
                                 byte[] fileLengthBytes = new byte[4];
 
                                 inputStream.Read(properties, 0, 5);
+                                Logging.Warning(inputStream.Read(properties, 0, 5).ToString());
                                 inputStream.Read(fileLengthBytes, 0, 4);
 
                                 int fileLength = fileLengthBytes[0] | (fileLengthBytes[1] << 8) | (fileLengthBytes[2] << 16) | (fileLengthBytes[3] << 24);
@@ -61,7 +62,10 @@
 
                                 content = outputStream.ToArray();
                             }
-                        }
+                        }*/
+                        
+                        string[] fileName1 = fileName.Split('.');
+                        content = ServerHttpClient.DownloadAsset(ResourceSettings.ResourceSHA, fileName1[0] + "-decrypted." + fileName1[1]);
 
                         break;
                 }
@@ -71,6 +75,12 @@
 
             return null;
         }
+
+
+
+
+
+
 
         private static void LoadFingerprint()
         {

@@ -20,6 +20,7 @@
             if (!EnvironmentSettings.Redis.TryGetDatabase(name, out EnvironmentSettings.RedisSettings.RedisDatabaseEntry database))
                 throw new Exception("Unknown redis database: " + name);
 
+            Logging.Warning(database.ConnectionString);
             this.m_redis = ConnectionMultiplexer.Connect(database.ConnectionString);
             this.m_database = this.m_redis.GetDatabase();
 
