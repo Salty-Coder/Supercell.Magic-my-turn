@@ -34,5 +34,7 @@ This is **complex to set up** but 1000x less complex than the original project.
 8. Set up an http web server where /supercell is the contents of the [www](https://github.com/Salty-Coder/Supercell.Magic-my-turn/blob/master/www/) folder.   
 9. Replace `127.0.0.1:8000` in [ResourceSettings.cs](https://github.com/Salty-Coder/Supercell.Magic-my-turn/blob/master/Supercell.Magic.Servers.Core/Settings/ResourceSettings.cs) to your http server IP and the port the web server is running on.   
 10. Replace `127.0.0.1` in [ServerCore.cs](https://github.com/Salty-Coder/Supercell.Magic-my-turn/blob/master/Supercell.Magic.Servers.Core/Settings/ServerCore.cs) with your http server IP if running on a remote server, and, if necessary, and the port the web server is running on.   
+11. Build the whole solution with Visual Studio as Debug.   
+12. Run start.bat.   
 
 Yes I know that is a lot of instructions but it is 10000000x easier than resolving all the issues from the original repository.
